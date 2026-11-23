@@ -1,0 +1,56 @@
+BIGLIETTI DI AUGURI - VERSIONE DIMOSTRATIVA
+
+A COSA SERVE
+L'Ufficio Servizi sociali manda un biglietto di auguri ai residenti anziani
+per il compleanno. Il programma legge l'elenco Excel, sceglie le persone per
+mese e anno di nascita e crea un PDF con un biglietto per persona (foglio A4
+da piegare in quattro): nome in copertina, data di nascita e data del
+compleanno all'interno. Crea anche etichette ed elenchi per le buste.
+
+Il programma è quello usato in ufficio, senza modifiche al funzionamento.
+Sono inventati: il modello del biglietto (stemma, fotografie, testi e firme),
+le tabelle Excel, le foto di prova e il PDF d'esempio. I codici fiscali usano
+un codice di comune che non esiste.
+
+L'ARCHIVIO È DIVISO IN DUE PARTI
+Il programma include Python per Windows, quindi non serve installare nulla:
+per stare nei limiti di dimensione dei download è diviso in due archivi.
+Estrai ENTRAMBE le parti nella stessa cartella (accetta di unire le cartelle).
+La parte 2 contiene python.exe e pythonw.exe: se manca, AVVIA.cmd avvisa che
+mancano file del runtime.
+
+COME AVVIARLO
+- Windows: AVVIA.cmd (oppure AVVIA_DIAGNOSTICA.cmd per vedere eventuali errori).
+- Linux o macOS: Python 3.10 o successivo con Tk e i pacchetti openpyxl,
+  reportlab e pillow; poi, da questa cartella, python3 biglietti.py
+
+COSA PROVARE
+1. Scrivi 2026 in "Anno del compleanno" e carica
+   Dati_di_prova/Elenco_compleanni_di_prova.xlsx.
+2. Il file ha due righe di titolo sopra le intestazioni e 64 righe:
+   - 4 righe non valide vengono escluse e segnalate (sesso "X", sesso
+     mancante, data scritta come testo, nome mancante);
+   - una persona nata il 29 febbraio: in un anno non bisestile il programma
+     chiede conferma per il 28 febbraio;
+   - un nome lunghissimo, che in copertina va a capo su tre righe;
+   - due gemelle con la stessa data, una con il sesso scritto in minuscolo;
+   - una persona nata nel 1925 e una senza indirizzo.
+3. Prova i filtri per mese e per anno di nascita, la ricerca, la matita per
+   correggere e la X per escludere una persona (l'Excel non viene toccato).
+4. Premi Avanti: nella scheda delle fotografie puoi usare le foto del modello
+   o quelle in Dati_di_prova/Foto. Foto_piccola_bassa_risoluzione.jpg mostra
+   gli avvisi di risoluzione e ritaglio. Modifica foto apre l'editor.
+5. Crea PDF e controlla il risultato. Esempio_con_nomi_fittizi.pdf mostra tre
+   biglietti creati dal programma con questo modello.
+6. Crea etichette / PDF apre elenchi ed etichette. Il "Comune fisso di
+   residenza" ha come valore predefinito quello dell'ufficio: con questi dati
+   scrivi Esempio.
+Seconda_tabella_di_prova.xlsx ha le colonne in un altro ordine e contiene una
+persona già presente nella prima tabella: le due tabelle si elaborano
+separatamente, come in ufficio.
+
+Verifiche fatte su Linux con Python 3.12: caricamento dell'elenco con le 4
+righe escluse, conferma del 29 febbraio, filtri e ricerca, foto con avvisi,
+editor foto, creazione di un PDF di 60 biglietti (60 pagine) e finestra delle
+etichette. L'avvio con il Python per Windows incluso non è stato provato su
+un PC Windows.
